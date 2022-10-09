@@ -1,4 +1,3 @@
-import Datetime from "./Datetime";
 import type { Frontmatter } from "src/types";
 
 export interface Props {
@@ -8,24 +7,71 @@ export interface Props {
 }
 
 const styles = {
-  cardContainer: "my-6",
+  cardContainer: "flex group justify-between items-normal",
+  featImage: "h-32 w-32 rounded",
   titleLink:
-    "text-skin-accent font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block",
-  titleHeading: "font-medium text-lg decoration-dashed hover:underline",
+    "text-skin-accent font-medium text-lg underline-offset-4 decoration-solid focus-visible:no-underline focus-visible:underline-offset-0 inline-block",
+  titleHeading: "font-medium text-xl decoration-solid hover:underline p-4 grow",
 };
 
 export default function Card({ href, post, secHeading = true }: Props) {
   return (
-    <li className={styles.cardContainer}>
-      <a href={href} className={styles.titleLink}>
-        {secHeading ? (
-          <h2 className={styles.titleHeading}>{post.title}</h2>
-        ) : (
-          <h3 className={styles.titleHeading}>{post.title}</h3>
-        )}
-      </a>
-      <Datetime datetime={post.datetime} />
-      <p>{post.description}</p>
-    </li>
+    <div className="flex flex-col group justify-start items-normal rounded border-skin-fill border-opacity-30 bg-skin-card p-0">
+      <img
+        alt="Home"
+        src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+        class="h-56 w-full object-cover"
+      />
+      <div class="p-0 flex flex-col justify-between h-full">
+        <div class="flex items-center font-bold text-xl decoration-solid hover:underline py-6 px-4 grow">
+          {post.title}
+        </div>
+        <div class="flex flex-none flex-row border-t border-skin-fill border-opacity-20 px-2">
+          <div className="basis-3/4 flex flex-row flex-nowrap py-2">
+            {post.tags.slice(0, 2).map((tag) => {
+              return (
+                <div className="flex justify-center items-center m-1 px-2 py-1.5 rounded bg-skin-fill text-skin-base font-medium justify-center">
+                  <div className="leading-none text-sm font-normal">{tag}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div class="basis-1/4 border-l border-skin-fill border-opacity-20 py-2 pl-2">
+            <a
+              href={href}
+              class="flex m-1 px-2 py-2 rounded bg-skin-accent text-skin-inverted font-medium justify-center items-center"
+            >
+              <div className="leading-none text-sm font-normal">Visit</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    // <li className={styles.cardContainer}>
+    //   <div className="flex-none w-32 mr-4">
+    //     <img src={post.ogImage} className={styles.featImage} />
+    //   </div>
+    //   <div className="grow">
+    //     <a href={href} className={styles.titleLink}>
+    //       {secHeading ? (
+    //         <h2 className={styles.titleHeading}>{post.title}</h2>
+    //       ) : (
+    //         <h3 className={styles.titleHeading}>{post.title}</h3>
+    //       )}
+    //     </a>
+    //     <div className="container mt-1 mb-2 bg-gray-100 flex flex-row">
+    //       {post.tags.map((tag) => {
+    //         return (
+    //           <div className="flex justify-center items-center m-1 px-2 py-1 border border-gray-300 rounded bg-gray-200 text-base text-gray-700 font-medium">
+    //             <div className="leading-none text-xs font-normal">{tag}</div>
+    //           </div>
+    //         );
+    //       })}
+    //     </div>
+    //     <p>{post.description}</p>
+    //   </div>
+    // </li>
   );
 }
