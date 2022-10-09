@@ -8,9 +8,9 @@ const { name, size = "sm" } = Astro.props;
 ---
 
 <li
-  class={`inline-block ${
+  class={`${
     size === "sm" ? "my-1 underline-offset-4" : "my-3 mx-1 underline-offset-8"
-  } inline-block m-1 px-1.5 py-1 rounded bg-skin-accent text-skin-inverted`}
+  } inline-block m-0.5 px-1.5 py-1 rounded bg-skin-accent text-skin-inverted hover:shadow-lg`}
 >
   <a
     href={`/tags/${name}`}
@@ -22,7 +22,7 @@ const { name, size = "sm" } = Astro.props;
 
 <style>
   a {
-    @apply hover:text-skin-base relative hover:-top-0.5 focus-visible:p-1;
+    @apply relative hover:-top-0.5 focus-visible:p-1;
   }
   a svg {
     @apply w-6 h-6 text-skin-base scale-95 opacity-80 -mr-5 group-hover:fill-skin-accent;

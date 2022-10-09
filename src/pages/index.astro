@@ -39,7 +39,7 @@ let tags = getUniqueTags(posts);
       <div class="social-wrapper">
         <Search client:load searchList={searchList} />
         <ul>
-          {tags.map((tag) => <Tag name={tag} size="sm" />)}
+          {tags.slice(0, 10).map((tag) => <Tag name={tag} size="sm" />)}
         </ul>
       </div>
     </section>
@@ -51,7 +51,7 @@ let tags = getUniqueTags(posts);
         {
           sortedPosts.map(
             ({ frontmatter }, index) =>
-              index < 4 && (
+              index < 8 && (
                 <Card
                   href={`/posts/${slugify(frontmatter)}`}
                   post={frontmatter}
@@ -96,7 +96,7 @@ let tags = getUniqueTags(posts);
   }
 
   .social-wrapper {
-    @apply flex flex-col w-full sm:flex-col mt-2 mb-6;
+    @apply flex flex-col w-full sm:flex-col mt-2 mb-4 justify-center;
   }
 
   .social-icons {
