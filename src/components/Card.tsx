@@ -30,7 +30,7 @@ export default function Card({ href, post, secHeading = true }: Props) {
           <div className="basis-3/4 flex flex-row flex-nowrap py-2">
             {post.tags.slice(0, 2).map((tag) => {
               return (
-                <div className="flex justify-start m-1 px-2 py-1.5 rounded bg-skin-fill text-skin-base font-medium justify-center">
+                <div className="flex justify-center items-center m-1 px-2 py-1.5 rounded bg-skin-fill text-skin-base font-medium justify-center">
                   <div className="leading-none text-sm font-normal">{tag}</div>
                 </div>
               );
@@ -40,7 +40,7 @@ export default function Card({ href, post, secHeading = true }: Props) {
           <div class="basis-1/4 border-l border-skin-fill border-opacity-20 py-2 pl-2">
             <a
               href={href}
-              class="flex justify-start m-1 px-2 py-2 rounded bg-skin-accent text-skin-inverted font-medium justify-center"
+              class="flex m-1 px-2 py-2 rounded bg-skin-accent text-skin-inverted font-medium justify-center items-center"
             >
               <div className="leading-none text-sm font-normal">Visit</div>
             </a>
