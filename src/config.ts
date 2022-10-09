@@ -1,10 +1,10 @@
 import type { SocialsObject } from "./types";
 
 export const SITE = {
-  website: "https://astro-paper.pages.dev/",
-  author: "Sat Naing",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
+  website: "https://h1bmoney.com",
+  author: "Pankaj Chobharkar",
+  desc: "Personal finance resources for expats",
+  title: "H1B-Money",
   ogImage: "default-og.png",
   lightAndDarkMode: true,
   postPerPage: 3,
