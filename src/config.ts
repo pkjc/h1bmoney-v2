@@ -4,7 +4,7 @@ export const SITE = {
   website: "https://h1bmoney.com",
   author: "Pankaj Chobharkar",
   desc: "Personal finance resources for expats",
-  title: "H1B-Money",
+  title: "✈️🫰",
   ogImage: "default-og.png",
   lightAndDarkMode: true,
   postPerPage: 3,
