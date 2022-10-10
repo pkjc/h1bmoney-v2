@@ -35,18 +35,18 @@ let tags = getUniqueTags(posts);
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Personal finance resources for expats</h1>
+      <h1>Personal finance resources for Indian expats in the US</h1>
       <div class="social-wrapper">
         <Search client:load searchList={searchList} />
         <ul>
+          <li class="my-2">filter by:</li>
           {tags.slice(0, 10).map((tag) => <Tag name={tag} size="sm" />)}
         </ul>
       </div>
     </section>
 
-    <Hr />
-
     <section id="recent-posts">
+      <h2 class="mb-6">Recently Added</h2>
       <ul class="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
         {
           sortedPosts.map(
@@ -80,10 +80,10 @@ let tags = getUniqueTags(posts);
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply py-6;
+    @apply pt-2;
   }
   #hero h1 {
-    @apply inline-block font-bold my-4 sm:my-8 text-3xl sm:text-5xl;
+    @apply inline-block font-bold my-6 sm:my-6 text-3xl sm:text-4xl sm:leading-snug;
   }
   #hero .rss-link {
     @apply mb-6;
@@ -96,7 +96,7 @@ let tags = getUniqueTags(posts);
   }
 
   .social-wrapper {
-    @apply flex flex-col w-full sm:flex-col mt-2 mb-4 justify-center;
+    @apply flex flex-col w-full sm:flex-col mt-2 mb-1 justify-center;
   }
 
   .social-icons {

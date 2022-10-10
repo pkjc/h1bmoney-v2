@@ -16,7 +16,7 @@ const styles = {
 
 export default function Card({ href, post, secHeading = true }: Props) {
   return (
-    <div className="flex flex-col group justify-start items-normal rounded border-skin-fill border-opacity-30 bg-skin-card p-0">
+    <div className="flex flex-col group justify-start items-normal rounded border border-skin-fill border-opacity-20 bg-skin-card p-0">
       <img
         alt="Home"
         src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"

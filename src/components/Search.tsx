@@ -81,7 +81,7 @@ export default function SearchBar({ searchList }: Props) {
         block bg-skin-fill w-full rounded
         border border-skin-fill border-opacity-40 
         focus:outline-none focus:border-skin-accent"
-          placeholder="Search for anything..."
+          placeholder="Search resources..."
           type="text"
           name="search"
           defaultValue={inputVal}
