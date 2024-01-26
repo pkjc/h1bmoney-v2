@@ -9,6 +9,7 @@ import LinkButton from "@components/LinkButton.astro";
 import slugify from "@utils/slugify";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "src/types";
+import SimpleCard from "@components/SimpleCard";
 
 export interface Props {
   pageNum: number;
@@ -29,7 +30,7 @@ const next = pageNum < totalPages ? "" : "disabled";
       {
         posts.map(({ frontmatter }) => {
           return (
-            <Card href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />
+            <SimpleCard href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />
           );
         })
       }

@@ -7,12 +7,15 @@ import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import getSortedPosts from "@utils/getSortedPosts";
+import filterObjectsByProperty from "@utils/filterObjectsByProperty";
 import socialIcons from "@assets/socialIcons";
 import slugify from "@utils/slugify";
 import type { Frontmatter } from "src/types";
 import Search from "@components/Search";
 import Tag from "@components/Tag.astro";
 import getUniqueTags from "@utils/getUniqueTags";
+import SimpleCard from "@components/SimpleCard";
+import TagPostList from "@components/TagPostList";
 
 const posts = await Astro.glob<Frontmatter>("../contents/*.md");
 
@@ -46,21 +49,112 @@ let tags = getUniqueTags(posts);
     </section>
 
     <section id="recent-posts">
-      <h2 class="mb-6">Recently Added</h2>
-      <ul class="mt-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- <h2 class="mb-6">Recently Added</h2> -->
+      <!-- <ul class="mt-1 grid grid-cols-1 sm:grid-cols-1 gap-6"> -->
+      <div class="grid divide-y divide-neutral-100 mx-auto mt-8">
         {
-          sortedPosts.map(
-            ({ frontmatter }, index) =>
-              index < 8 && (
-                <Card
-                  href={`/posts/${slugify(frontmatter)}`}
-                  post={frontmatter}
-                  secHeading={false}
-                />
-              )
-          )
+          tags
+            .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
+            .map(
+              (tag, index) =>
+                index < 6 && (
+                  <div class="py-5">
+                    <details class="group">
+                      <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
+                        <span> {tag}</span>
+                        <span class="transition group-open:rotate-180">
+                          <svg
+                            fill="none"
+                            height="24"
+                            shape-rendering="geometricPrecision"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="1.5"
+                            viewBox="0 0 24 24"
+                            width="24"
+                          >
+                            <path d="M6 9l6 6 6-6" />
+                          </svg>
+                        </span>
+                      </summary>
+                      {sortedPosts
+                        .filter((post) => post.frontmatter.tags.includes(tag))
+                        .map(
+                          ({ frontmatter }, index) =>
+                            index < 6 && (
+                              <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                                {frontmatter.title}
+                              </p>
+                            )
+                        )}
+                    </details>
+                  </div>
+                )
+            )
         }
-      </ul>
+      </div>
+
+      <!-- <div class="grid divide-y divide-neutral-100 mx-auto mt-8">
+        <div class="py-5">
+          <details class="group">
+            <summary
+              class="flex justify-between items-center font-medium cursor-pointer list-none"
+            >
+              <span> How do I contact support?</span>
+              <span class="transition group-open:rotate-180">
+                <svg
+                  fill="none"
+                  height="24"
+                  shape-rendering="geometricPrecision"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  ><path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+              If you need help with the platform or have any other questions,
+              you can contact the company's support team by submitting a support
+              request through the website or by emailing support@We.com.
+            </p>
+          </details>
+        </div>
+        <div class="py-5">
+          <details class="group">
+            <summary
+              class="flex justify-between items-center font-medium cursor-pointer list-none"
+            >
+              <span> How do we compare to other similar services?</span>
+              <span class="transition group-open:rotate-180">
+                <svg
+                  fill="none"
+                  height="24"
+                  shape-rendering="geometricPrecision"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  ><path d="M6 9l6 6 6-6"></path>
+                </svg>
+              </span>
+            </summary>
+            <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
+              This platform is a highly reliable and feature-rich service that
+              offers a wide range of tools and functionality. It is
+              competitively priced and offers a variety of billing options to
+              suit different needs and budgets.
+            </p>
+          </details>
+        </div>
+      </div> -->
+
       <div class="all-posts-btn-wrapper">
         <LinkButton href="/posts">
           All Posts

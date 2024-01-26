@@ -1,3 +1,4 @@
+import React from "react";
 import type { Frontmatter } from "src/types";
 
 export interface Props {
@@ -20,16 +21,16 @@ export default function Card({ href, post, secHeading = true }: Props) {
       <img
         alt="Home"
         src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-        class="h-56 w-full object-cover"
+        className="h-56 w-full object-cover"
       />
-      <div class="p-0 flex flex-col justify-between h-full">
-        <div class="flex items-center font-bold text-xl decoration-solid hover:underline py-4 px-4 grow">
+      <div className="p-0 flex flex-col justify-between h-full">
+        <div className="flex items-center font-bold text-xl decoration-solid hover:underline py-4 px-4 grow">
           <span>
             {post.title}
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="icon icon-tabler icon-tabler-external-link mt-0.5 ml-1 w-0.5"
+              className="icon icon-tabler icon-tabler-external-link mt-0.5 ml-1 w-0.5"
               width="16"
               height="16"
               viewBox="0 0 30 30"
@@ -46,7 +47,7 @@ export default function Card({ href, post, secHeading = true }: Props) {
             </svg>
           </span>
         </div>
-        <div class="flex flex-none flex-row border-t border-skin-fill border-opacity-20 px-2">
+        <div className="flex flex-none flex-row border-t border-skin-fill border-opacity-20 px-2">
           <div className="basis-3/4 flex flex-row flex-nowrap py-2">
             {post.tags.slice(0, 2).map((tag) => {
               return (
@@ -57,10 +58,10 @@ export default function Card({ href, post, secHeading = true }: Props) {
             })}
           </div>
 
-          <div class="basis-1/4 border-l border-skin-fill border-opacity-20 py-2 pl-2">
+          <div className="basis-1/4 border-l border-skin-fill border-opacity-20 py-2 pl-2">
             <a
               href={href}
-              class="flex m-1 px-2 py-2 rounded bg-skin-accent text-skin-inverted font-medium justify-center items-center"
+              className="flex m-1 px-2 py-2 rounded bg-skin-accent text-skin-inverted font-medium justify-center items-center"
             >
               <div className="leading-none text-sm font-normal">Save</div>
             </a>

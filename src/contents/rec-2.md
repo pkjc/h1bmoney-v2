@@ -6,8 +6,7 @@ slug: my-recent-2
 featured: false
 draft: true
 tags:
-  - TypeScript
-  - Astro
+  - Budgeting
 description:
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
   incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel
