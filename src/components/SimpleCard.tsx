@@ -16,9 +16,9 @@ export default function SimpleCard({ href, post, secHeading = true } : any) {
         className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
       >
         {secHeading ? (
-          <h2 {...headerProps}>{post.title}</h2>
+          <h2 className="text-lg font-medium decoration-dashed hover:underline">{post.title}</h2>
         ) : (
-          <h3 {...headerProps}>{post.title}</h3>
+          <h3 className="text-lg font-medium decoration-dashed hover:underline">{post.title}</h3>
         )}
       </a>
       

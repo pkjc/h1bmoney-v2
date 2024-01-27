@@ -78,16 +78,25 @@ let tags = getUniqueTags(posts);
                           </svg>
                         </span>
                       </summary>
-                      {sortedPosts
-                        .filter((post) => post.frontmatter.tags.includes(tag))
-                        .map(
-                          ({ frontmatter }, index) =>
-                            index < 6 && (
-                              <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-                                {frontmatter.title}
-                              </p>
-                            )
-                        )}
+                      <ul>
+                        {sortedPosts
+                          .filter((post) => post.frontmatter.tags.includes(tag))
+                          .map(
+                            ({ frontmatter }, index) =>
+                              index < 6 && (
+                                <li>
+                                  <a
+                                    href={frontmatter.href}
+                                    class="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+                                  >
+                                    <h3 class="text-lg font-medium decoration-dashed hover:underline">
+                                      {frontmatter.title}
+                                    </h3>
+                                  </a>
+                                </li>
+                              )
+                          )}
+                      </ul>
                     </details>
                   </div>
                 )

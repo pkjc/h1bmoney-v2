@@ -9,6 +9,7 @@ tags:
   - Banking
 ogImage: ""
 description: How you can make AstroPaper theme absolutely yours.
+href: http://google.com
 ---
 
 AstroPaper is a highly customizable Astro blog theme. With AstroPaper, you can customize everything according to your personal taste. This article will explain how you can make some customizations easily in the config file.

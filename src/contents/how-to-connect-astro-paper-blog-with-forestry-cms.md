@@ -11,6 +11,7 @@ ogImage: https://res.cloudinary.com/noezectz/v1663745737/astro-paper/astropaper-
 description:
   Step by step process of connecting Astro-Paper blog theme with Forestry
   Headless CMS.
+href: http://google.com
 ---
 
 In this article, I will explain step by step process of connecting AstroPaper theme with the Forestry headless CMS. So, let's get started 🎉
