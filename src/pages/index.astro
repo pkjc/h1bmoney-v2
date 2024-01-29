@@ -22,7 +22,7 @@ let tags = getUniqueTags(posts);
 ---
 
 <Layout>
-  <!-- <Header /> -->
+  <Header />
   <main id="main-content">
     <section id="hero">
       <h1>Personal finance resources for beginners</h1>
@@ -110,55 +110,53 @@ let tags = getUniqueTags(posts);
       )
     } -->
 
-    <section id="recent-posts-1">
-      <div class="mx-auto grid divide-y divide-slate-700 mt-8">
+    <section id="recent-posts">
+      <h2 class="mt-6 mb-4">Top Resources</h2>
+      <div class="mx-auto grid divide-y divide-slate-700">
         {
           tags.map(
             (tag, index) =>
               index < 6 && (
                 <div class="">
                   <details class="group">
-                    <summary class="flex cursor-pointer list-none items-center justify-between py-4 text-lg font-bold group-open:border-b group-open:border-slate-700">
-                      <span class="">
+                    <summary class="flex cursor-pointer list-none py-4 text-xl font-bold group-open:border-b group-open:border-slate-700">
+                      <span class="transition group-open:rotate-90 mr-2">
+                        <svg
+                          class="h-5 w-5 rounded-md fill-transparent"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" />
+                          <polyline points="9 6 15 12 9 18" />
+                        </svg>
+                      </span>
+                      <span class="leading-8">
                         {tag.tagName.charAt(0).toUpperCase() +
                           tag.tagName.slice(1)}
                       </span>
-                      <span class="transition group-open:rotate-180">
-                        <svg
-                          fill="none"
-                          height="24"
-                          shape-rendering="geometricPrecision"
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1.5"
-                          viewBox="0 0 24 24"
-                          width="24"
-                        >
-                          <path d="M6 9l6 6 6-6" />
-                        </svg>
-                      </span>
                     </summary>
-                    <ul>
-                      {recentPosts.length > 0 && (
-                        <ul class="py-3">
-                          {recentPosts
-                            .filter(post =>
-                              post.data.tags.includes(tag.tagName)
-                            )
-                            .map(
-                              ({ data, slug }, index) =>
-                                index < 6 && (
-                                  <Card
-                                    href={`/posts/${slug}/`}
-                                    frontmatter={data}
-                                    secHeading={false}
-                                  />
-                                )
-                            )}
-                        </ul>
-                      )}
-                    </ul>
+                    {recentPosts.length > 0 && (
+                      <ol class="mx-6 list-decimal py-3">
+                        {recentPosts
+                          .filter(post => post.data.tags.includes(tag.tagName))
+                          .map(
+                            ({ data, slug }, index) =>
+                              index < 6 && (
+                                <Card
+                                  href={`/posts/${slug}/`}
+                                  frontmatter={data}
+                                  secHeading={false}
+                                />
+                              )
+                          )}
+                      </ol>
+                    )}
                   </details>
                 </div>
               )
@@ -169,7 +167,7 @@ let tags = getUniqueTags(posts);
 
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
-        All Posts
+        More Resources
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
@@ -217,6 +215,6 @@ let tags = getUniqueTags(posts);
     @apply text-2xl font-semibold tracking-wide;
   }
   .all-posts-btn-wrapper {
-    @apply my-8 text-center;
+    @apply my-4 text-center;
   }
 </style>
