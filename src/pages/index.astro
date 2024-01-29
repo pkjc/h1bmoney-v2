@@ -9,6 +9,7 @@ import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { SOCIALS } from "@config";
+import getUniqueTags from "@utils/getUniqueTags";
 
 const posts = await getCollection("blog");
 
@@ -17,14 +18,15 @@ const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
+let tags = getUniqueTags(posts);
 ---
 
 <Layout>
-  <Header />
+  <!-- <Header /> -->
   <main id="main-content">
     <section id="hero">
-      <h1>Mingalaba</h1>
-      <a
+      <h1>Personal finance resources for beginners</h1>
+      <!-- <a
         target="_blank"
         href="/rss.xml"
         class="rss-link"
@@ -39,7 +41,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           ></path><circle cx="6" cy="18" r="2"></circle>
         </svg>
         <span class="sr-only">RSS Feed</span>
-      </a>
+      </a> -->
 
       <p>
         AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
@@ -69,7 +71,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <Hr />
 
-    {
+    <!-- {
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
@@ -87,12 +89,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           {recentPosts.length > 0 && <Hr />}
         </>
       )
-    }
+    } -->
 
-    {
+    <!-- {
       recentPosts.length > 0 && (
         <section id="recent-posts">
-          <h2>Recent Posts</h2>
           <ul>
             {recentPosts.map(
               ({ data, slug }, index) =>
@@ -107,7 +108,64 @@ const socialCount = SOCIALS.filter(social => social.active).length;
           </ul>
         </section>
       )
-    }
+    } -->
+
+    <section id="recent-posts-1">
+      <div class="mx-auto grid divide-y divide-slate-700 mt-8">
+        {
+          tags.map(
+            (tag, index) =>
+              index < 6 && (
+                <div class="">
+                  <details class="group">
+                    <summary class="flex cursor-pointer list-none items-center justify-between py-4 text-lg font-bold group-open:border-b group-open:border-slate-700">
+                      <span class="">
+                        {tag.tagName.charAt(0).toUpperCase() +
+                          tag.tagName.slice(1)}
+                      </span>
+                      <span class="transition group-open:rotate-180">
+                        <svg
+                          fill="none"
+                          height="24"
+                          shape-rendering="geometricPrecision"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="1.5"
+                          viewBox="0 0 24 24"
+                          width="24"
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </span>
+                    </summary>
+                    <ul>
+                      {recentPosts.length > 0 && (
+                        <ul class="py-3">
+                          {recentPosts
+                            .filter(post =>
+                              post.data.tags.includes(tag.tagName)
+                            )
+                            .map(
+                              ({ data, slug }, index) =>
+                                index < 6 && (
+                                  <Card
+                                    href={`/posts/${slug}/`}
+                                    frontmatter={data}
+                                    secHeading={false}
+                                  />
+                                )
+                            )}
+                        </ul>
+                      )}
+                    </ul>
+                  </details>
+                </div>
+              )
+          )
+        }
+      </div>
+    </section>
 
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
@@ -130,7 +188,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply pb-6 pt-8;
   }
   #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-3xl;
   }
   #hero .rss-link {
     @apply mb-6;
@@ -152,7 +210,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
   #recent-posts {
-    @apply pb-6 pt-12;
+    @apply pb-4 pt-4;
   }
   #featured h2,
   #recent-posts h2 {

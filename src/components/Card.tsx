@@ -13,14 +13,14 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
-    className: "text-lg font-medium decoration-dashed hover:underline",
+    className: "text-lg font-bold",
   };
 
   return (
-    <li className="my-6">
+    <li className="py-3">
       <a
         href={href}
-        className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+        className="inline-block text-skin-accent underline mb-4 hover:no-underline underline-offset-4"
       >
         {secHeading ? (
           <h2 {...headerProps}>{title}</h2>
@@ -28,7 +28,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
           <h3 {...headerProps}>{title}</h3>
         )}
       </a>
-      <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} />
+      {/* <Datetime pubDatetime={pubDatetime} modDatetime={modDatetime} /> */}
       <p>{description}</p>
     </li>
   );
