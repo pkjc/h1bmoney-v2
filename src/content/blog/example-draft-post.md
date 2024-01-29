@@ -1,8 +1,8 @@
 ---
-title: My recent article 2
+title: Example Draft Post
 author: Sat Naing
-datetime: 2022-06-06T04:06:31Z
-slug: my-recent-2
+pubDatetime: 2022-06-06T04:06:31Z
+slug: example-draft-post
 featured: false
 draft: true
 tags:
@@ -14,7 +14,7 @@ description:
 href: http://google.com
 ---
 
-My experience about developing my first portfolio website and a blog using NextJS and a headless CMS.
+Users cannot see this post because it is in draft.
 
 ## Motivation
 

@@ -1,7 +1,7 @@
 ---
 title: How Do I Develop My Terminal Portfolio Website with React
 author: Sat Naing
-datetime: 2022-06-09T03:42:51Z
+pubDatetime: 2022-06-09T03:42:51Z
 slug: how-do-i-develop-my-terminal-portfolio-website-with-react
 featured: false
 draft: false
@@ -55,31 +55,31 @@ Here are some features of the project.
 
 Users can change multiple themes. At the time of writing this post, there are 5 themes; and more themes will probably be added in the future. The selected theme is saved in local storage so that the theme won’t change on page refresh.
 
-![](https://i.ibb.co/fSTCnWB/terminal-portfolio-multiple-themes.gif)
+![Setting different theme](https://i.ibb.co/fSTCnWB/terminal-portfolio-multiple-themes.gif)
 
 ### Command-line Completion
 
 To look and feel as close to the actual terminal as possible, I put a command-line completion feature which auto fills in partially typed commands by simply pressing ‘Tab’ or ‘Ctrl + i’.
 
-![](https://i.ibb.co/CQTGGLF/terminal-autocomplete.gif)
+![Demonstrating command-line completion](https://i.ibb.co/CQTGGLF/terminal-autocomplete.gif)
 
 ### Previous Commands
 
 Users can go back to the previous commands or navigate the previously typed commands by pressing Up & Down Arrows.
 
-![](https://i.ibb.co/vD1pSRv/terminal-up-down.gif)
+![Going back to previous commands with UP Arrow](https://i.ibb.co/vD1pSRv/terminal-up-down.gif)
 
 ### View/Clear Command History
 
 previously typed commands can be viewed by typing ‘history’ in the command line. All the command history and terminal screen can be wiped out by typing ‘clear’ or pressing ‘Ctrl + l’.
 
-![](https://i.ibb.co/SJBy8Rr/terminal-clear.gif)
+![Clearing the terminal with 'clear' or 'Ctrl + L' command](https://i.ibb.co/SJBy8Rr/terminal-clear.gif)
 
 ## Outro
 
 This is a really fun project, and one special part of this project is I had to focus on logic rather than user-interface (even though this is kind of a frontend project).
 
-**Project Links**
+## Project Links
 
 - Website: [https://terminal.satnaing.dev/](https://terminal.satnaing.dev/ "https://terminal.satnaing.dev/")
 - Repo: [https://github.com/satnaing/terminal-portfolio](https://github.com/satnaing/terminal-portfolio "https://github.com/satnaing/terminal-portfolio")

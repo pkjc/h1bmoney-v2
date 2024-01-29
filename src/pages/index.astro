@@ -1,180 +1,124 @@
 ---
-import { SOCIALS } from "src/config";
+import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
+import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
-import filterObjectsByProperty from "@utils/filterObjectsByProperty";
-import socialIcons from "@assets/socialIcons";
-import slugify from "@utils/slugify";
-import type { Frontmatter } from "src/types";
-import Search from "@components/Search";
-import Tag from "@components/Tag.astro";
-import getUniqueTags from "@utils/getUniqueTags";
-import SimpleCard from "@components/SimpleCard";
-import TagPostList from "@components/TagPostList";
+import { SOCIALS } from "@config";
 
-const posts = await Astro.glob<Frontmatter>("../contents/*.md");
+const posts = await getCollection("blog");
 
 const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
-// List of items to search in
-const searchList = posts
-  .filter(({ frontmatter }) => !frontmatter.draft)
-  .map((post) => ({
-    title: post.frontmatter.title,
-    description: post.frontmatter.description,
-    headings: post.getHeadings().map((h) => h.text),
-    frontmatter: post.frontmatter,
-  }));
-
-let tags = getUniqueTags(posts);
+const socialCount = SOCIALS.filter(social => social.active).length;
 ---
 
 <Layout>
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Personal finance resources for Indian expats in the US</h1>
-      <div class="social-wrapper">
-        <Search client:load searchList={searchList} />
-        <ul>
-          <li class="my-2">filter by:</li>
-          {tags.slice(0, 10).map((tag) => <Tag name={tag} size="sm" />)}
-        </ul>
-      </div>
+      <h1>Mingalaba</h1>
+      <a
+        target="_blank"
+        href="/rss.xml"
+        class="rss-link"
+        aria-label="rss feed"
+        title="RSS Feed"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+          ><path
+            d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+          ></path><path
+            d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+          ></path><circle cx="6" cy="18" r="2"></circle>
+        </svg>
+        <span class="sr-only">RSS Feed</span>
+      </a>
+
+      <p>
+        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
+        blog theme. This theme follows best practices and provides accessibility
+        out of the box. Light and dark mode are supported by default. Moreover,
+        additional color schemes can also be configured.
+      </p>
+      <p>
+        Read the blog posts or check
+        <LinkButton
+          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
+          href="https://github.com/satnaing/astro-paper#readme"
+        >
+          README
+        </LinkButton> for more info.
+      </p>
+      {
+        // only display if at least one social link is enabled
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <div class="social-links">Social Links:</div>
+            <Socials />
+          </div>
+        )
+      }
     </section>
 
-    <section id="recent-posts">
-      <!-- <h2 class="mb-6">Recently Added</h2> -->
-      <!-- <ul class="mt-1 grid grid-cols-1 sm:grid-cols-1 gap-6"> -->
-      <div class="grid divide-y divide-neutral-100 mx-auto mt-8">
-        {
-          tags
-            .map((str) => str.charAt(0).toUpperCase() + str.slice(1))
-            .map(
-              (tag, index) =>
-                index < 6 && (
-                  <div class="py-5">
-                    <details class="group">
-                      <summary class="flex justify-between items-center font-medium cursor-pointer list-none">
-                        <span> {tag}</span>
-                        <span class="transition group-open:rotate-180">
-                          <svg
-                            fill="none"
-                            height="24"
-                            shape-rendering="geometricPrecision"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="1.5"
-                            viewBox="0 0 24 24"
-                            width="24"
-                          >
-                            <path d="M6 9l6 6 6-6" />
-                          </svg>
-                        </span>
-                      </summary>
-                      <ul>
-                        {sortedPosts
-                          .filter((post) => post.frontmatter.tags.includes(tag))
-                          .map(
-                            ({ frontmatter }, index) =>
-                              index < 6 && (
-                                <li>
-                                  <a
-                                    href={frontmatter.href}
-                                    class="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-                                  >
-                                    <h3 class="text-lg font-medium decoration-dashed hover:underline">
-                                      {frontmatter.title}
-                                    </h3>
-                                  </a>
-                                </li>
-                              )
-                          )}
-                      </ul>
-                    </details>
-                  </div>
+    <Hr />
+
+    {
+      featuredPosts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured</h2>
+            <ul>
+              {featuredPosts.map(({ data, slug }) => (
+                <Card
+                  href={`/posts/${slug}/`}
+                  frontmatter={data}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          {recentPosts.length > 0 && <Hr />}
+        </>
+      )
+    }
+
+    {
+      recentPosts.length > 0 && (
+        <section id="recent-posts">
+          <h2>Recent Posts</h2>
+          <ul>
+            {recentPosts.map(
+              ({ data, slug }, index) =>
+                index < 4 && (
+                  <Card
+                    href={`/posts/${slug}/`}
+                    frontmatter={data}
+                    secHeading={false}
+                  />
                 )
-            )
-        }
-      </div>
+            )}
+          </ul>
+        </section>
+      )
+    }
 
-      <!-- <div class="grid divide-y divide-neutral-100 mx-auto mt-8">
-        <div class="py-5">
-          <details class="group">
-            <summary
-              class="flex justify-between items-center font-medium cursor-pointer list-none"
-            >
-              <span> How do I contact support?</span>
-              <span class="transition group-open:rotate-180">
-                <svg
-                  fill="none"
-                  height="24"
-                  shape-rendering="geometricPrecision"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  ><path d="M6 9l6 6 6-6"></path>
-                </svg>
-              </span>
-            </summary>
-            <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-              If you need help with the platform or have any other questions,
-              you can contact the company's support team by submitting a support
-              request through the website or by emailing support@We.com.
-            </p>
-          </details>
-        </div>
-        <div class="py-5">
-          <details class="group">
-            <summary
-              class="flex justify-between items-center font-medium cursor-pointer list-none"
-            >
-              <span> How do we compare to other similar services?</span>
-              <span class="transition group-open:rotate-180">
-                <svg
-                  fill="none"
-                  height="24"
-                  shape-rendering="geometricPrecision"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  viewBox="0 0 24 24"
-                  width="24"
-                  ><path d="M6 9l6 6 6-6"></path>
-                </svg>
-              </span>
-            </summary>
-            <p class="text-neutral-600 mt-3 group-open:animate-fadeIn">
-              This platform is a highly reliable and feature-rich service that
-              offers a wide range of tools and functionality. It is
-              competitively priced and offers a variety of billing options to
-              suit different needs and budgets.
-            </p>
-          </details>
-        </div>
-      </div> -->
-
-      <div class="all-posts-btn-wrapper">
-        <LinkButton href="/posts">
-          All Posts
-          <svg xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
-            ></path>
-          </svg>
-        </LinkButton>
-      </div>
-    </section>
+    <div class="all-posts-btn-wrapper">
+      <LinkButton href="/posts/">
+        All Posts
+        <svg xmlns="http://www.w3.org/2000/svg"
+          ><path
+            d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+          ></path>
+        </svg>
+      </LinkButton>
+    </div>
   </main>
 
   <Footer />
@@ -183,43 +127,38 @@ let tags = getUniqueTags(posts);
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pt-2;
+    @apply pb-6 pt-8;
   }
   #hero h1 {
-    @apply inline-block font-bold my-6 sm:my-6 text-3xl sm:text-4xl sm:leading-snug;
+    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl;
   }
   #hero .rss-link {
     @apply mb-6;
   }
   #hero .rss-icon {
-    @apply h-6 w-6 scale-110 sm:scale-125 mb-2 sm:mb-3 fill-skin-accent;
+    @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
   #hero p {
     @apply my-2;
   }
 
   .social-wrapper {
-    @apply flex flex-col w-full sm:flex-col mt-2 mb-1 justify-center;
+    @apply mt-4 flex flex-col sm:flex-row sm:items-center;
   }
-
-  .social-icons {
-    @apply mt-1 sm:mt-0 sm:ml-2 sm:space-x-1;
-  }
-  .link-button {
-    @apply p-2 sm:p-1 hover:rotate-6;
+  .social-links {
+    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
   #recent-posts {
-    @apply pt-12 pb-6;
+    @apply pb-6 pt-12;
   }
   #featured h2,
   #recent-posts h2 {
-    @apply font-semibold text-2xl tracking-wide;
+    @apply text-2xl font-semibold tracking-wide;
   }
-
   .all-posts-btn-wrapper {
-    @apply text-center my-8;
+    @apply my-8 text-center;
   }
 </style>

@@ -1,8 +1,6 @@
 ---
-import socialIcons from "@assets/socialIcons";
-import { SOCIALS } from "src/config";
 import Hr from "./Hr.astro";
-import LinkButton from "./LinkButton.astro";
+import Socials from "./Socials.astro";
 
 const currentYear = new Date().getFullYear();
 
@@ -16,19 +14,7 @@ const { noMarginTop = false } = Astro.props;
 <footer class={`${noMarginTop ? "" : "mt-auto"}`}>
   <Hr noPadding />
   <div class="footer-wrapper">
-    <div class="social-icons">
-      {
-        SOCIALS.filter((social) => social.active).map((social) => (
-          <LinkButton
-            href={social.href}
-            className="link-button"
-            title={social.name}
-          >
-            <Fragment set:html={socialIcons[social.name]} />
-          </LinkButton>
-        ))
-      }
-    </div>
+    <Socials centered />
     <div class="copyright-wrapper">
       <span>Copyright &#169; {currentYear}</span>
       <span class="separator">&nbsp;|&nbsp;</span>
@@ -42,21 +28,18 @@ const { noMarginTop = false } = Astro.props;
     @apply w-full;
   }
   .footer-wrapper {
-    @apply py-6 sm:py-4 flex flex-col sm:flex-row-reverse justify-between items-center;
+    @apply flex flex-col items-center justify-between py-6 sm:flex-row-reverse sm:py-4;
   }
   .link-button {
-    @apply p-2 my-1 hover:rotate-6;
+    @apply my-1 p-2 hover:rotate-6;
   }
   .link-button svg {
     @apply scale-125;
   }
   .copyright-wrapper {
-    @apply my-2 flex flex-col sm:flex-row items-center whitespace-nowrap;
+    @apply my-2 flex flex-col items-center whitespace-nowrap sm:flex-row;
   }
   .separator {
     @apply hidden sm:inline;
-  }
-  .social-icons {
-    @apply flex flex-wrap justify-center gap-1;
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 title: How Do I Develop My Portfolio Website & Blog
 author: Sat Naing
-datetime: 2022-03-25T16:55:12.000+00:00
+pubDatetime: 2022-03-25T16:55:12.000+00:00
 slug: how-do-i-develop-my-portfolio-and-blog
 featured: false
 draft: false
@@ -95,7 +95,7 @@ In conclusion, this project gives me a lot of experience and confidence about de
 
 And... last but not least, I would like to say 'thanks' to my friend [Swann Fevian Kyaw](https://www.facebook.com/bon.zai.3910 "Swann Fevian Kyaw's Facebook Account") (@[ToonHa](https://www.facebook.com/ToonHa-102639465752883 "ToonHa Facebook Page")) who has drawn a beautiful illustration for my hero section of the website.
 
-**Project Links**
+## Project Links
 
 - Website: [https://satnaing.dev/](https://satnaing.dev/ "https://satnaing.dev/")
 - Blog: [https://satnaing.dev/blog](https://satnaing.dev/blog "https://satnaing.dev/blog")
