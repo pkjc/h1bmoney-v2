@@ -6,7 +6,7 @@ title: How to add a new Social Icon to AstroPaper
 featured: false
 draft: false
 tags:
-  - Taxes
+  - taxes
 description: How to add a new social icon to AstroPaper
 ---
 

@@ -12,7 +12,7 @@ function getTagRank(tag: string): number {
   const tagRanking = {
     "getting started guides": 1,
     budgeting: 2,
-    "high-yeild savings accounts": 3,
+    "high-yield savings accounts": 3,
     banking: 4,
     "credit building": 5,
     "credit cards": 6,
@@ -20,7 +20,8 @@ function getTagRank(tag: string): number {
     investing: 8,
     taxes: 9,
     housing: 10,
-    insurance: 11,
+    "emergency funds": 11,
+    "side hustles": 12,
   };
   return tagRanking[tag] || 999;
 }

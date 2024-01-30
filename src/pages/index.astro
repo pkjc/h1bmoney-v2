@@ -83,7 +83,7 @@ let tags = getUniqueTags(posts);
       }
     </section>
 
-    <!-- <Hr /> -->
+    <Hr />
 
     <!-- {
       featuredPosts.length > 0 && (
@@ -126,59 +126,55 @@ let tags = getUniqueTags(posts);
 
     <section id="recent-posts">
       <h2 class="mb-4 mt-6">Featured Resources</h2>
-      <div class="mx-auto grid divide-y divide-slate-400">
+      <div class="mx-auto grid divide-y divide-skin-line">
         {
-          tags.map(
-            (tag, index) =>
-              index < 20 && (
-                <div class="">
-                  <details
-                    class="group"
-                    onmouseover="changeClass(this)"
-                    onmouseout="restoreClass(this)"
-                  >
-                    <summary class="flex cursor-pointer list-none py-3 text-lg font-bold group-open:border-b group-open:border-slate-400">
-                      <span class="summ-span mr-2 transition group-open:rotate-90">
-                        <svg
-                          class="h-5 w-5 rounded-md fill-transparent"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path stroke="none" d="M0 0h24v24H0z" />
-                          <polyline points="9 6 15 12 9 18" />
-                        </svg>
-                      </span>
-                      <span class="leading-8">
-                        {tag.tagName.charAt(0).toUpperCase() +
-                          tag.tagName.slice(1)}
-                      </span>
-                    </summary>
-                    {recentPosts.length > 0 && (
-                      <ol class="mx-6 list-decimal py-3">
-                        {recentPosts
-                          .filter(post => post.data.tags.includes(tag.tagName))
-                          .map(
-                            ({ data, slug }, index) =>
-                              index < 6 && (
-                                <Card
-                                  href={`/posts/${slug}/`}
-                                  frontmatter={data}
-                                  secHeading={false}
-                                />
-                              )
-                          )}
-                      </ol>
-                    )}
-                  </details>
-                </div>
-              )
-          )
+          tags.map((tag, index) => (
+            <div class="">
+              <details
+                class="group"
+                onmouseover="changeClass(this)"
+                onmouseout="restoreClass(this)"
+              >
+                <summary class="flex cursor-pointer list-none py-3 text-lg font-bold group-open:border-b group-open:border-skin-line">
+                  <span class="summ-span mr-2 transition group-open:rotate-90">
+                    <svg
+                      class="h-5 w-5 rounded-md fill-transparent"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" />
+                      <polyline points="9 6 15 12 9 18" />
+                    </svg>
+                  </span>
+                  <span class="leading-8">
+                    {tag.tagName.charAt(0).toUpperCase() + tag.tagName.slice(1)}
+                  </span>
+                </summary>
+                {recentPosts.length > 0 && (
+                  <ol class="mx-6 list-decimal py-3">
+                    {recentPosts
+                      .filter(post => post.data.tags.includes(tag.tagName))
+                      .map(
+                        ({ data, slug }, index) =>
+                          index < 20 && (
+                            <Card
+                              href={`/posts/${slug}/`}
+                              frontmatter={data}
+                              secHeading={false}
+                            />
+                          )
+                      )}
+                  </ol>
+                )}
+              </details>
+            </div>
+          ))
         }
       </div>
     </section>
