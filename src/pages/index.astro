@@ -21,8 +21,22 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 let tags = getUniqueTags(posts);
 ---
 
+<script is:inline>
+  function changeClass(parentElement) {
+    const elementToChange = parentElement.querySelector(".summ-span");
+    elementToChange.classList.remove("text-black");
+    elementToChange.classList.add("text-white");
+  }
+
+  function restoreClass(parentElement) {
+    const elementToChange = parentElement.querySelector(".summ-span");
+    elementToChange.classList.remove("text-white");
+    elementToChange.classList.add("text-current-color");
+  }
+</script>
+
 <Layout>
-  <!-- <Header /> -->
+  <Header />
   <main id="main-content">
     <section id="hero">
       <h1>Personal finance resources for beginners</h1>
@@ -69,7 +83,7 @@ let tags = getUniqueTags(posts);
       }
     </section>
 
-    <Hr />
+    <!-- <Hr /> -->
 
     <!-- {
       featuredPosts.length > 0 && (
@@ -111,16 +125,20 @@ let tags = getUniqueTags(posts);
     } -->
 
     <section id="recent-posts">
-      <h2 class="mt-6 mb-4">Featured Resources</h2>
-      <div class="mx-auto grid divide-y divide-slate-700">
+      <h2 class="mb-4 mt-6">Featured Resources</h2>
+      <div class="mx-auto grid divide-y divide-slate-400">
         {
           tags.map(
             (tag, index) =>
               index < 20 && (
                 <div class="">
-                  <details class="group">
-                    <summary class="flex cursor-pointer list-none py-4 text-lg font-bold group-open:border-b group-open:border-slate-700">
-                      <span class="transition group-open:rotate-90 mr-2">
+                  <details
+                    class="group"
+                    onmouseover="changeClass(this)"
+                    onmouseout="restoreClass(this)"
+                  >
+                    <summary class="flex cursor-pointer list-none py-3 text-lg font-bold group-open:border-b group-open:border-slate-400">
+                      <span class="summ-span mr-2 transition group-open:rotate-90">
                         <svg
                           class="h-5 w-5 rounded-md fill-transparent"
                           width="24"

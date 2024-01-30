@@ -5,8 +5,7 @@ title: Customizing AstroPaper theme color schemes
 featured: false
 draft: false
 tags:
-  - color-schemes
-  - docs
+  - credit cards
 description:
   How you can enable/disable light & dark mode; and customize color schemes
   of AstroPaper theme.

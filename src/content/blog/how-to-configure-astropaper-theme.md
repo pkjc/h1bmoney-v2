@@ -7,8 +7,7 @@ slug: how-to-configure-astropaper-theme
 featured: true
 draft: false
 tags:
-  - configuration
-  - docs
+  - insurance
 description: How you can make AstroPaper theme absolutely yours.
 ---
 

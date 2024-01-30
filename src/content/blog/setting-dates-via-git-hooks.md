@@ -6,8 +6,7 @@ title: How to use Git Hooks to set Created and Modified Dates
 featured: false
 draft: false
 tags:
-  - docs
-  - FAQ
+  - emergency funds
 canonicalURL: https://smale.codes/posts/setting-dates-via-git-hooks/
 description: How to use Git Hooks to set your Created and Modified Dates on AstroPaper
 ---
