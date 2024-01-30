@@ -20,7 +20,7 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
     <li className="py-3">
       <a
         href={href}
-        className="inline-block text-skin-accent underline mb-4 hover:no-underline underline-offset-4"
+        className="inline-block text-skin-accent underline mb-2 hover:no-underline underline-offset-4"
       >
         {secHeading ? (
           <h2 {...headerProps}>{title}</h2>

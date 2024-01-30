@@ -22,7 +22,7 @@ let tags = getUniqueTags(posts);
 ---
 
 <Layout>
-  <Header />
+  <!-- <Header /> -->
   <main id="main-content">
     <section id="hero">
       <h1>Personal finance resources for beginners</h1>
@@ -111,15 +111,15 @@ let tags = getUniqueTags(posts);
     } -->
 
     <section id="recent-posts">
-      <h2 class="mt-6 mb-4">Top Resources</h2>
+      <h2 class="mt-6 mb-4">Featured Resources</h2>
       <div class="mx-auto grid divide-y divide-slate-700">
         {
           tags.map(
             (tag, index) =>
-              index < 6 && (
+              index < 20 && (
                 <div class="">
                   <details class="group">
-                    <summary class="flex cursor-pointer list-none py-4 text-xl font-bold group-open:border-b group-open:border-slate-700">
+                    <summary class="flex cursor-pointer list-none py-4 text-lg font-bold group-open:border-b group-open:border-slate-700">
                       <span class="transition group-open:rotate-90 mr-2">
                         <svg
                           class="h-5 w-5 rounded-md fill-transparent"
@@ -183,19 +183,19 @@ let tags = getUniqueTags(posts);
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pb-6 pt-8;
+    @apply pb-6 pt-6;
   }
   #hero h1 {
-    @apply my-4 inline-block text-3xl font-bold sm:my-8 sm:text-3xl;
+    @apply my-1 inline-block text-3xl font-bold sm:my-8 sm:text-3xl;
   }
-  #hero .rss-link {
+  /* #hero .rss-link {
     @apply mb-6;
-  }
+  } */
   #hero .rss-icon {
     @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
   #hero p {
-    @apply my-2;
+    @apply my-1;
   }
 
   .social-wrapper {
