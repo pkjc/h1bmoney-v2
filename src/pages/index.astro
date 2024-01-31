@@ -10,6 +10,7 @@ import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { SOCIALS } from "@config";
 import getUniqueTags from "@utils/getUniqueTags";
+import getPostsByTag from "@utils/getPostsByTag";
 
 const posts = await getCollection("blog");
 
@@ -156,20 +157,18 @@ let tags = getUniqueTags(posts);
                     {tag.tagName.charAt(0).toUpperCase() + tag.tagName.slice(1)}
                   </span>
                 </summary>
-                {recentPosts.length > 0 && (
+                {featuredPosts.length > 0 && (
                   <ol class="mx-6 list-decimal py-3">
-                    {recentPosts
-                      .filter(post => post.data.tags.includes(tag.tagName))
-                      .map(
-                        ({ data, slug }, index) =>
-                          index < 20 && (
-                            <Card
-                              href={`/posts/${slug}/`}
-                              frontmatter={data}
-                              secHeading={false}
-                            />
-                          )
-                      )}
+                    {getPostsByTag(featuredPosts, tag.tag).map(
+                      ({ data, slug }, index) =>
+                        index < 6 && (
+                          <Card
+                            href={`/posts/${slug}/`}
+                            frontmatter={data}
+                            secHeading={false}
+                          />
+                        )
+                    )}
                   </ol>
                 )}
               </details>

@@ -22,6 +22,8 @@ function getTagRank(tag: string): number {
     housing: 10,
     "emergency funds": 11,
     "side hustles": 12,
+    travel: 13,
+    "student loan": 14,
   };
   return tagRanking[tag] || 999;
 }
