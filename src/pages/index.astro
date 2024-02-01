@@ -37,7 +37,7 @@ let tags = getUniqueTags(posts);
 </script>
 
 <Layout>
-  <Header />
+  <!-- <Header /> -->
   <main id="main-content">
     <section id="hero">
       <h1>Personal finance resources for beginners</h1>
@@ -136,7 +136,7 @@ let tags = getUniqueTags(posts);
                 onmouseover="changeClass(this)"
                 onmouseout="restoreClass(this)"
               >
-                <summary class="flex cursor-pointer list-none py-3 text-lg font-bold group-open:border-b group-open:border-skin-line">
+                <summary class="flex cursor-pointer list-none py-3 text-xl font-semibold group-open:border-b group-open:border-skin-line">
                   <span class="summ-span mr-2 transition group-open:rotate-90">
                     <svg
                       class="h-5 w-5 rounded-md fill-transparent"
@@ -199,7 +199,7 @@ let tags = getUniqueTags(posts);
     @apply pb-6 pt-6;
   }
   #hero h1 {
-    @apply my-1 inline-block text-3xl font-bold sm:my-8 sm:text-3xl;
+    @apply my-1 inline-block text-3xl font-semibold sm:my-8 sm:text-3xl;
   }
   /* #hero .rss-link {
     @apply mb-6;
@@ -208,7 +208,7 @@ let tags = getUniqueTags(posts);
     @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
   #hero p {
-    @apply my-1;
+    @apply my-1 text-lg;
   }
 
   .social-wrapper {

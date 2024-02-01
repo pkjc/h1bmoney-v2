@@ -18,8 +18,10 @@
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/rss": "^4.0.2",
+    "@fontsource-variable/mulish": "^5.0.17",
     "@fontsource-variable/work-sans": "^5.0.17",
     "@fontsource/lato": "^5.0.18",
+    "@fontsource/livvic": "^5.0.18",
     "@resvg/resvg-js": "^2.6.0",
     "astro": "^4.2.1",
     "fuse.js": "^7.0.0",

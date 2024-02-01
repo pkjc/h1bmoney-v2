@@ -54,7 +54,8 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
-        mono: ["Lato", "Sans-serif", "monospace"],
+        sans: ["Mulish Variable", "Sans-serif"],
+        display: ["Livvic", "Sans-serif"]
       },
 
       typography: {
