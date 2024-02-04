@@ -9,7 +9,8 @@ export interface Props {
 }
 
 export default function Card({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, modDatetime, description } = frontmatter;
+  const { title, pubDatetime, modDatetime, description, canonicalURL } =
+    frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -19,8 +20,9 @@ export default function Card({ href, frontmatter, secHeading = true }: Props) {
   return (
     <li className="py-3">
       <a
-        href={href}
-        className="inline-block text-skin-accent underline mb-2 hover:no-underline underline-offset-4"
+        href={canonicalURL}
+        className="inline-block text-skin-accent underline mb-2 hover:no-underline underline-offset-4 capitalize"
+        target="_blank"
       >
         {secHeading ? (
           <h2 {...headerProps}>{title}</h2>
