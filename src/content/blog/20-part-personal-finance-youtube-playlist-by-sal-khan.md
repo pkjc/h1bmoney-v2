@@ -8,4 +8,5 @@ tags:
   - getting started
 description: Improve your money management skills with these educational videos from Sal Khan of Khan Academy, made in partnership with Practical Money Skills. This free resource is designed to teach you important personal finance concepts, quickly and easily.
 canonicalURL: https://www.youtube.com/playlist?list=PLUBoK8lZIxW90VxgRyjqWfPf4BZ-tYeGN
+resourceType: video
 ---

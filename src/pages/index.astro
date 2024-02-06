@@ -153,9 +153,7 @@ let tags = getUniqueTags(posts);
                       <polyline points="9 6 15 12 9 18" />
                     </svg>
                   </span>
-                  <span class="leading-8">
-                    {tag.tagName.charAt(0).toUpperCase() + tag.tagName.slice(1)}
-                  </span>
+                  <span class="leading-8 capitalize">{tag.tagName}</span>
                 </summary>
                 {featuredPosts.length > 0 && (
                   <ol class="mx-6 list-decimal py-3">

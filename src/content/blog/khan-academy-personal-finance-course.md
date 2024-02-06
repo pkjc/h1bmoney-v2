@@ -8,4 +8,5 @@ tags:
   - getting started
 description: This course includes a compilation of videos and articles that explore various subjects, spanning from saving and investing to debt management and insurance. These materials are crafted to assist you in acquiring a fundamental understanding of personal finance concepts.
 canonicalURL: https://www.khanacademy.org/college-careers-more/personal-finance
+resourceType: course
 ---
