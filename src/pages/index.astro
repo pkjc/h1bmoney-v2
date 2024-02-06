@@ -59,12 +59,21 @@ let tags = getUniqueTags(posts);
       </a> -->
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        Welcome to the personal finance page – your friendly guide to mastering
+        money!
       </p>
       <p>
+        If you're trying to learn how to navigate the complex world of finance,
+        you've found exactly what you need! The goal of this site is to simplify
+        money matters for everyone. From budgeting to investing, discover the
+        best resources to take control of your personal finance without
+        confusion.
+      </p>
+      <p>
+        Ready to kickstart your financial journey? Let's dive in together and
+        make your money work for you!
+      </p>
+      <!-- <p>
         Read the blog posts or check
         <LinkButton
           className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
@@ -72,8 +81,8 @@ let tags = getUniqueTags(posts);
         >
           README
         </LinkButton> for more info.
-      </p>
-      {
+      </p> -->
+      <!-- {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
@@ -81,7 +90,7 @@ let tags = getUniqueTags(posts);
             <Socials />
           </div>
         )
-      }
+      } -->
     </section>
 
     <Hr />
@@ -153,7 +162,7 @@ let tags = getUniqueTags(posts);
                       <polyline points="9 6 15 12 9 18" />
                     </svg>
                   </span>
-                  <span class="leading-8 capitalize">{tag.tagName}</span>
+                  <span class="capitalize leading-8">{tag.tagName}</span>
                 </summary>
                 {featuredPosts.length > 0 && (
                   <ol class="mx-6 list-decimal py-3">
@@ -177,14 +186,14 @@ let tags = getUniqueTags(posts);
     </section>
 
     <div class="all-posts-btn-wrapper">
-      <LinkButton href="/posts/">
+      <!-- <LinkButton href="/posts/">
         More Resources
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
           ></path>
         </svg>
-      </LinkButton>
+      </LinkButton> -->
     </div>
   </main>
 
