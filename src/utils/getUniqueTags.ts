@@ -10,7 +10,7 @@ interface Tag {
 
 function getTagRank(tag: string): number {
   const tagRanking = {
-    "getting started": 1,
+    "the basics": 1,
     budgeting: 2,
     "high-yield savings accounts": 3,
     banking: 4,
