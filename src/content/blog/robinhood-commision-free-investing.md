@@ -5,7 +5,7 @@ featured: true
 draft: false
 tags:
   - investing
-description: The app is very beginner-friendly without lacking any important features.
+description: An easy to use investing app that is user-friendly without lacking any important features.
 canonicalURL: https://robinhood.com
 resourceType: app
 ---

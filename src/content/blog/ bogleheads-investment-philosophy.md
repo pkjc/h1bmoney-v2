@@ -5,7 +5,7 @@ featured: true
 draft: false
 tags:
   - investing
-description: Bogleheads, a term intended to honor Vanguard founder John Bogle, are investors who follow an easy to understand and implement investment philosophy that has historically produced good returns than the returns of average investors. A good starting point for beginners.
+description: Beginner-friendly investment principles that have historically produced better returns than the returns of average investors.
 canonicalURL: https://www.bogleheads.org/wiki/Video:Bogleheads%C2%AE_investment_philosophy
 resourceType: video
 ---
