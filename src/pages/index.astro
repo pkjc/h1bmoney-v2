@@ -87,7 +87,7 @@ let tags = getUniqueTags(posts);
       } -->
     </section>
 
-    <Hr />
+    <!-- <Hr /> -->
 
     <!-- {
       featuredPosts.length > 0 && (
@@ -129,8 +129,8 @@ let tags = getUniqueTags(posts);
     } -->
 
     <section id="recent-posts">
-      <h2 class="mb-4 mt-6">Featured Resources</h2>
-      <div class="mx-auto grid divide-y divide-skin-line">
+      <h2 class="mb-4 mt-0">Featured Resources</h2>
+      <div class="mx-auto grid divide-y1 1divide-slate-300">
         {
           tags.map((tag, index) => (
             <div class="">
@@ -139,7 +139,7 @@ let tags = getUniqueTags(posts);
                 onmouseover="changeClass(this)"
                 onmouseout="restoreClass(this)"
               >
-                <summary class="flex cursor-pointer list-none py-3 text-xl font-semibold group-open:border-b group-open:border-skin-line">
+                <summary class="flex cursor-pointer list-none py-2.5 text-xl font-semibold border-b group-open:border-b group-open:border-slate-300">
                   <span class="summ-span mr-2 transition group-open:rotate-90">
                     <svg
                       class="h-5 w-5 rounded-md fill-transparent"
@@ -197,10 +197,10 @@ let tags = getUniqueTags(posts);
 <style>
   /* ===== Hero Section ===== */
   #hero {
-    @apply pb-6 pt-6;
+    @apply pb-2 pt-6;
   }
   #hero h1 {
-    @apply mb-0.5 mt-1 inline-block text-3xl font-semibold sm:my-8 sm:text-3xl;
+    @apply mb-6 mt-1 inline-block text-3xl font-semibold sm:my-6 sm:text-3xl leading-10;
   }
   /* #hero .rss-link {
     @apply mb-6;
@@ -209,7 +209,7 @@ let tags = getUniqueTags(posts);
     @apply mb-2 h-6 w-6 scale-110 fill-skin-accent sm:mb-3 sm:scale-125;
   }
   #hero p {
-    @apply my-1 mb-3 text-xl;
+    @apply my-1 mb-3 text-xl leading-8;
   }
 
   .social-wrapper {

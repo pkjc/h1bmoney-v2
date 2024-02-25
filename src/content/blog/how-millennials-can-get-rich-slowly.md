@@ -5,7 +5,7 @@ featured: true
 draft: false
 tags:
   - the basics
-description: A study guide on saving for retirement, geared towards young people but useful for any age. William Bernstein, author of several books on investing, released this free online booklet.
+description: A free booklet on saving for retirement, geared towards young people but useful for any age.
 canonicalURL: https://www.etf.com/docs/IfYouCan.pdf
 resourceType: article
 ---
